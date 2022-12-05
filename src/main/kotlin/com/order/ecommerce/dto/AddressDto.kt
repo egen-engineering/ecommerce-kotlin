@@ -1,15 +1,11 @@
 package com.order.ecommerce.dto
 
-import lombok.NonNull
-
 data class AddressDto(
-
-    @NonNull val address1: String,
-    @NonNull val address2: String,
-    @NonNull val city: String,
-    @NonNull val state: String,
-    @NonNull val zip: String,
-    @NonNull val email: String,
-    @NonNull val phone: String
-
+    val address1: String,
+    val address2: String,
+    val city: String,
+    val state: String,
+    val zip: String,
+    val email: String,
+    val phone: String
 )

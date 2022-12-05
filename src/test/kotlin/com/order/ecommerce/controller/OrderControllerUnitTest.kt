@@ -2,7 +2,7 @@ package com.order.ecommerce.controller
 
 import com.order.ecommerce.dto.OrderCreateResponse
 import com.order.ecommerce.dto.OrderDto
-import com.order.ecommerce.service.OrderService
+import com.order.ecommerce.service.impl.OrderServiceImpl
 import com.order.ecommerce.util.OrderUtil
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -15,9 +15,8 @@ import org.mockito.junit.jupiter.MockitoExtension
 @ExtendWith(MockitoExtension::class)
 class OrderControllerUnitTest {
 
-
     @Mock
-    lateinit var orderService: OrderService
+    lateinit var orderService: OrderServiceImpl
 
     @InjectMocks
     lateinit var orderController: OrderController
@@ -25,8 +24,7 @@ class OrderControllerUnitTest {
     private val orderDtoRequest: OrderDto = OrderUtil.createTestOrder()
     private val mockOrderCreateResponse: OrderCreateResponse =
         OrderCreateResponse("2e99fe21-2243-4004-9640-e992bbcc5040", "PROCESSING")
-    private val mockOrderGetResponse = OrderUtil.createMockOrderResponse()
-
+    private val mockOrderGetResponse = OrderUtil.createTestOrder()
 
     @Test
     fun testCreateOrder() {
@@ -43,5 +41,4 @@ class OrderControllerUnitTest {
         val actualResponse = orderController.findOrderById("2e99fe21-2243-4004-9640-e992bbcc5040")
         assertThat(actualResponse).isEqualTo(mockOrderGetResponse)
     }
-
 }

@@ -1,7 +1,9 @@
 package com.order.ecommerce.model
 
+import com.order.ecommerce.enum.PaymentStatus
 import java.io.Serializable
 import java.time.LocalDate
+import java.util.UUID
 import javax.persistence.*
 
 @Entity
@@ -30,4 +32,15 @@ class Payment(
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "payment")
     private var order: Order?
 
-) : Serializable
+) : Serializable {
+
+    constructor(amount: Double, paymentMode: String) : this(
+        UUID.randomUUID().toString(),
+        amount,
+        paymentMode,
+        UUID.randomUUID().toString(),
+        PaymentStatus.PROCESSING.name,
+        LocalDate.now(),
+        null
+    )
+}

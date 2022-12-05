@@ -52,8 +52,8 @@ dependencies {
     testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
 
     //mapstruct
-    implementation("org.mapstruct:mapstruct:1.4.2.Final")
-    annotationProcessor("org.mapstruct:mapstruct-processor:1.4.2.Final")
+    implementation("org.mapstruct:mapstruct:1.5.3.Final")
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
@@ -65,7 +65,7 @@ dependencies {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict")
+        freeCompilerArgs = listOf("-Xjsr305=strict",)
         jvmTarget = "17"
     }
 }
@@ -76,10 +76,6 @@ java.sourceSets["main"].java {
 
 tasks.withType<Test> {
     useJUnitPlatform()
-}
-
-noArg {
-    annotation("com.my.Annotation")
 }
 
 noArg {
