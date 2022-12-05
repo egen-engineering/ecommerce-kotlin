@@ -45,11 +45,11 @@ class Order(
     @JoinColumn(referencedColumnName = "payment_id", name = "payment_id")
     open var payment: Payment,
 
-    @OneToOne
+    @OneToOne(cascade = [CascadeType.ALL])
     @JoinColumn(referencedColumnName = "address_id", name = "billing_address_id")
     open var billingAddress: Address,
 
-    @OneToOne
+    @OneToOne(cascade = [CascadeType.ALL])
     @JoinColumn(referencedColumnName = "address_id", name = "shipping_address_id")
     open var shippingAddress: Address,
 
